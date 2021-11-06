@@ -106,3 +106,4 @@ venv.bak/
 # dataset
 datasets/envirodataset
 datasets/envirodataset.7z
+examples/custom-trained-model/latest_optimiser.pytorch
