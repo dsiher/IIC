@@ -14,9 +14,9 @@ def IID_loss(x_out, x_tf_out, lamb=1.0, EPS=sys.float_info.epsilon):
                                            k)  # but should be same, symmetric
 
   # avoid NaN losses. Effect will get cancelled out by p_i_j tiny anyway
-  p_i_j[(p_i_j < EPS).data] = EPS
-  p_j[(p_j < EPS).data] = EPS
-  p_i[(p_i < EPS).data] = EPS
+  p_i_j = torch.where(p_i_j < EPS, torch.tensor([EPS], device = p_i_j.device), p_i_j)
+  p_j = torch.where(p_j < EPS, torch.tensor([EPS], device = p_j.device), p_j)
+  p_i = torch.where(p_i < EPS, torch.tensor([EPS], device = p_i.device), p_i)
 
   loss = - p_i_j * (torch.log(p_i_j) \
                     - lamb * torch.log(p_j) \

@@ -102,3 +102,7 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+# dataset
+datasets/envirodataset
+datasets/envirodataset.7z
